@@ -1,1 +1,1 @@
-export { navbarLinks } from "./data";
+export { navbarLinks , technologiesData , projectsData } from "./data";
