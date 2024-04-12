@@ -11,20 +11,22 @@ const ProjectCard = ({ data }) => {
         />
 
         <Bottom>
-            <ProjectName>
-                {
-                  data.name
-                }
-            </ProjectName>
+            <Top>
+              <ProjectName>
+                  {
+                    data.name
+                  }
+              </ProjectName>
 
-            <ProjectTechnologies>
-              Tech stack :
-              <span style={{fontSize:"14px"}}>
-                {
-                  data.technologies
-                } 
-              </span>
-            </ProjectTechnologies>
+              <ProjectTechnologies>
+                Tech stack :
+                <span style={{fontSize:"14px"}}>
+                  {
+                    data.technologies
+                  } 
+                </span>
+              </ProjectTechnologies>
+            </Top>
 
             <ProjectLinksBody>
                 <DemoLink>
@@ -52,9 +54,8 @@ export default ProjectCard
 
 const Box = styled.div`
     max-width: 375px;
-    max-height: 567px;
     width: 100%;
-    height: 100%;
+    height: 500px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -62,15 +63,21 @@ const Box = styled.div`
 
 const ProjectImg = styled.img`
     width: 375px;
+    height: 250px;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
 `
 
 const Bottom = styled.div`
     background: #363636;
-    padding: 28px;
+    padding: 0px 28px;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
+    height: 100%;
+    max-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 `
 
 const ProjectName = styled.p`
@@ -82,14 +89,12 @@ const ProjectName = styled.p`
 const ProjectTechnologies = styled.p`
     font-size: 16px;
     font-weight: regular;
-    margin-top: 20px;
     color: #ccc;
 `
 
 const ProjectLinksBody = styled.div`
     display: flex;
     justify-content: space-between;
-    margin-top: 70px;
 `
 
 const DemoLink = styled.div`
@@ -109,4 +114,10 @@ const GithubLink = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
+`
+
+const Top = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 30px
 `

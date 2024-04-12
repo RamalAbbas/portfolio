@@ -4,23 +4,16 @@ import { Header } from './components/Static/index'
 import { technologiesData , projectsData } from './mock/index'
 import './assets/css/reset.css'
 import TechnologoyCard from './components/Static/TechnologyCard'
-import { useNavigate } from 'react-router-dom'
 import ProjectCard from './components/Static/ProjectCard'
 
 
 const App = () => {
-  const navigate = useNavigate()
-
-  const forwardFunc = (link: string) => {
-    navigate(link)
-  }
-
   return (
     <>
       <Header />
 
         <Main>
-            <AboutMeBox>
+            <AboutMeBox id="about">
                 <AboutTitle>
                     Hi 👋, <br></br>
                     <CyanText>My name is Ramal</CyanText> <br></br>
@@ -32,7 +25,7 @@ const App = () => {
                 />
             </AboutMeBox>
 
-            <Technologies>
+            <Technologies id="techstack">
                 <HeadTitle>
                   My Tech Stack
                 </HeadTitle>
@@ -44,13 +37,13 @@ const App = () => {
                 <TechnologiesCardBody>
                     {
                       technologiesData.map((info,index) => (
-                        <TechnologoyCard data={info} key={index} forwardFunc={forwardFunc} />
+                        <TechnologoyCard data={info} key={index} />
                       ))
                     }
                 </TechnologiesCardBody>
             </Technologies>
 
-            <Projects>
+            <Projects id="projects">
                 <HeadTitle>
                   Projects
                 </HeadTitle>
@@ -61,7 +54,7 @@ const App = () => {
 
                 <ProjectBoxBody>
                       {
-                          projectsData.map((item,index) => (
+                          projectsData.map((item) => (
                             <ProjectCard data={item} />
                           ))
                       }
@@ -84,7 +77,7 @@ const Main = styled.main`
 
 //! About User  
 
-const AboutMeBox = styled.div`
+const AboutMeBox = styled.section`
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -109,7 +102,7 @@ const AboutImage = styled.img`
 
 //! Techonologies
 
-const Technologies = styled.div`
+const Technologies = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -145,7 +138,7 @@ const CyanText = styled.span`
 
 //! Projects
 
-const Projects = styled.div`
+const Projects = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: center;

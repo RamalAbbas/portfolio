@@ -48,3 +48,7 @@ body{
 	background-color: #181818;
 	font-family: "DM Sans", sans-serif;
 }
+
+html {
+    scroll-behavior: smooth
+}

@@ -7,6 +7,7 @@ import { navbarLinks } from '../../../mock/index'
 
 const Header = () => {
   const navigate = useNavigate()
+  
   return (
     <Wrapper>
         <Left>
@@ -56,7 +57,7 @@ const List = styled.ul`
 
 const Item = styled.li``
 
-const Link = styled.a`
+const Link = styled.p`
   cursor: pointer;
   font-size: 20px;
   color: #a7a7a7;

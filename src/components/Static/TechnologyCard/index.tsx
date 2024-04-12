@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 interface CardTypes {
@@ -7,13 +8,14 @@ interface CardTypes {
     logo: string;
 }
 
-const TechnologoyCard: FC<{ data: CardTypes }> = ({ data , forwardFunc }) => {
+const TechnologoyCard: FC<{ data: CardTypes }> = ({ data  }) => {
+    const navigate = useNavigate()
     return (
         <div>
             <TechonologyCardLogo
                 src={data.logo}
                 alt={data.technology}
-                onClick={() => forwardFunc(data.documentation)}
+                onClick={() => navigate(data.documentation)}
             />
         </div>
     )
