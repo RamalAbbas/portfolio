@@ -1,10 +1,8 @@
 import styled from 'styled-components'
 
-import { Header } from './components/Static/index'
+import { Header , Footer , TechnologyCard , ProjectCard } from './components/Static/index'
 import { technologiesData , projectsData } from './mock/index'
 import './assets/css/reset.css'
-import TechnologoyCard from './components/Static/TechnologyCard'
-import ProjectCard from './components/Static/ProjectCard'
 
 
 const App = () => {
@@ -37,7 +35,7 @@ const App = () => {
                 <TechnologiesCardBody>
                     {
                       technologiesData.map((info,index) => (
-                        <TechnologoyCard data={info} key={index} />
+                        <TechnologyCard data={info} key={index} />
                       ))
                     }
                 </TechnologiesCardBody>
@@ -61,6 +59,8 @@ const App = () => {
                 </ProjectBoxBody>
             </Projects>
         </Main>
+
+      <Footer />
     </>
   )
 }
