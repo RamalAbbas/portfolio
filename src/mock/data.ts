@@ -13,19 +13,15 @@ export const navbarLinks: navbarLinks[] = [
         hash: "#about",
     },
     {
+        name: "Tech Stack",
+        hash: "#techstack",
+    },
+    {
         name: "Projects",
         hash: "#projects",
     },
     {
-        name: "Skills",
-        hash: "#skills",
-    },
-    {
-        name: "Experience",
-        hash: "#experience",
-    },
-    {
         name: "Contact",
         hash: "#contact",
-    },
+    }
 ];
