@@ -1,8 +1,17 @@
-import styled from "styled-components"
-import { Github, Switch } from "../../Icons"
 import { useNavigate } from "react-router-dom"
+import styled from "styled-components"
+import { FC } from 'react';
 
-const ProjectCard = ({ data }) => {
+import { Github, Switch } from "../../Icons"
+interface projectTypes {
+  image: string;
+  name: string;
+  technologies: string;
+  githubLink: string;
+  vercelLink: string;
+}
+
+const ProjectCard: FC<{ data: projectTypes }>  = ({ data }) => {
   const navigate = useNavigate()
   return (
     <Box>
