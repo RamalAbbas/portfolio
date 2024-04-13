@@ -4,20 +4,20 @@ import { SocialMedia } from '../index'
 import { GrayLogo } from '../../Icons/index'
 const Footer = () => {
   return (
-    <Wrapper>
+    <Wrapper id='contact'>
         <Left>
             <GrayLogo />
         </Left>
 
         <Contact>
-            <ContactNumber>
+            <ContactNumber href='tel:010-717-73-76'>
                 010-717-73-76
             </ContactNumber>
 
-            <ContactEmail>
+            <ContactEmail href="mailto:ramalabbasov044@gmail.com">
                 ramalabbasov044@gmail.com
             </ContactEmail>
-
+            
             <SocialMedia />
         </Contact>
     </Wrapper>
@@ -43,13 +43,23 @@ const Contact = styled.div`
     gap: 35px;
 `
 
-const ContactNumber = styled.p`
+const ContactNumber = styled.a`
     color: #a7a7a7;
     font-size: 18px;
     font-weight: regular;
+    text-decoration: none;
+    
+    &:hover{
+        text-decoration: underline;
+    }
 `
-const ContactEmail = styled.p`
+const ContactEmail = styled.a`
     color: #a7a7a7;
     font-size: 18px;
     font-weight: regular;
+    text-decoration: none;
+
+    &:hover{
+        text-decoration: underline;
+    }
 `

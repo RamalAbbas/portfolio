@@ -32,9 +32,10 @@ const App = () => {
                     <CyanText>My name is Ramal</CyanText> <br></br>
                     I build things for web
                 </AboutTitle>
+
                 <AboutImage
-                    src=""
-                    alt=""
+                    src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745"
+                    alt="userImage"
                 />
             </AboutMeBox>
 
@@ -87,6 +88,8 @@ const Main = styled.main`
     display: flex;
     flex-direction: column;
     padding: 0px 230px 0px 177px;
+    padding-top: 143.5px;
+    
 
     @media screen and (max-width:1350px){
         .TechnologiesCardBody{
@@ -105,7 +108,7 @@ const Main = styled.main`
 
 //! About User  
 
-const AboutMeBox = styled.section`
+const AboutMeBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;

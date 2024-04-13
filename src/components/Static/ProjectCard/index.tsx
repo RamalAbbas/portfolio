@@ -1,5 +1,4 @@
 import { useGlobalStore } from "../../../provider/povider";
-import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { FC } from 'react';
 
@@ -14,11 +13,6 @@ interface projectTypes {
 
 const ProjectCard: FC<{ data: projectTypes }>  = ({ data }) => {
   const { theme } = useGlobalStore()
-  const navigate = useNavigate()
-
-  const handleClick = (link:string) => {
-    navigate(link)
-  }
 
   const customBottomColor = {
     backgroundColor: theme !== "light" ? "#363636" : '#fff'
@@ -62,9 +56,9 @@ const ProjectCard: FC<{ data: projectTypes }>  = ({ data }) => {
 
             <ProjectLinksBody>
                 <DemoLink>
-                  {theme == "light" ? <BlackSwitch/> : <Switch /> }
+                  {theme == "light" ? <BlackSwitch/> : <Switch /> } 
 
-                  <SwitchLink style={customSwitchLink} onClick={() => navigate(data.vercelLink)}>
+                  <SwitchLink style={customSwitchLink} onClick={() => window.open(data.vercelLink, "_blank")}>
                       Live Preview
                   </SwitchLink>
                 </DemoLink>
@@ -72,7 +66,7 @@ const ProjectCard: FC<{ data: projectTypes }>  = ({ data }) => {
                 <GithubLink>
                     {theme == "light" ? <BlackGithub/> : <Github /> }
 
-                    <SwitchLink style={customSwitchLink} onClick={() => handleClick(data.githubLink)}>
+                    <SwitchLink style={customSwitchLink} onClick={() => window.open(data.githubLink, "_blank")}>
                         Live Preview
                     </SwitchLink>
                 </GithubLink>
