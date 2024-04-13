@@ -48,6 +48,7 @@ const ContactNumber = styled.a`
     font-size: 18px;
     font-weight: regular;
     text-decoration: none;
+    
     &:hover{
         text-decoration: underline;
     }
