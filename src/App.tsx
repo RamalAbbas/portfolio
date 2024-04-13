@@ -26,8 +26,8 @@ const App = () => {
       <Header />
 
         <Main className="content">
-            <AboutMeBox id="about">
-                <AboutTitle style={aboutTitleColor}>
+            <AboutMeBox id="about" className='about'>
+                <AboutTitle className='about_title' style={aboutTitleColor}>
                     Hi 👋, <br></br>
                     <CyanText>My name is Ramal</CyanText> <br></br>
                     I build things for web
@@ -36,15 +36,16 @@ const App = () => {
                 <AboutImage
                     src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745"
                     alt="userImage"
+                    className='userImage'
                 />
             </AboutMeBox>
 
             <Technologies id="techstack">
-                <HeadTitle style={headTitleColor}>
+                <HeadTitle className='head_title' style={headTitleColor}>
                   My Tech Stack
                 </HeadTitle>
 
-                <HeadDescription>
+                <HeadDescription className='head_desc'>
                   Technologies I’ve been working with recently
                 </HeadDescription>
 
@@ -58,11 +59,11 @@ const App = () => {
             </Technologies>
 
             <Projects id="projects">
-                <HeadTitle style={headTitleColor}>
+                <HeadTitle className='head_title' style={headTitleColor}>
                   Projects
                 </HeadTitle>
 
-                <HeadDescription>
+                <HeadDescription className='head_desc'>
                   Things I’ve built so far
                 </HeadDescription>
 
@@ -87,11 +88,10 @@ export default App
 const Main = styled.main`
     display: flex;
     flex-direction: column;
-    padding: 0px 230px 0px 177px;
-    padding-top: 143.5px;
+    padding: 143.5px 230px 0px 177px;
     
 
-    @media screen and (max-width:1350px){
+    @media screen and (max-width: 1350px){
         .TechnologiesCardBody{
           grid-template-columns: repeat(4,1fr)
         }
@@ -100,7 +100,75 @@ const Main = styled.main`
           grid-template-columns: repeat(2,1fr)
         }
 
-        padding: 0px 130px 0px 77px !important;
+        padding: 143.5px 70px 0px 70px !important;
+    }
+
+    @media screen and (max-width: 1200px){
+        .about_title{
+            font-size: 45px;
+        }
+
+        .userImage{
+            width: 270px;
+            height: 270px;
+        }
+    }
+
+    @media screen and (max-width: 992px){
+        .about{
+            flex-direction: column;
+            text-align: center;
+            gap: 30px;
+        }
+
+        .TechnologiesCardBody{
+          grid-template-columns: repeat(3,1fr)
+        }
+    }
+
+    @media screen and (max-width: 850px){
+        .ProjectBoxBody{
+          grid-template-columns: repeat(1,1fr)
+        }
+    }
+
+    @media screen and (max-width: 769px) {
+        .head_title{
+          font-size: 29px;
+          text-align: center;
+        }
+
+        .head_desc{
+            font-size: 20px;
+            text-align: center;
+        } 
+
+        .TechnologiesCardBody div img{
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    @media screen and (max-width: 580px) {
+        .TechnologiesCardBody div img{
+            width: 60px;
+            height: 60px;
+        }
+
+        .about_title{
+            font-size: 30px;
+            line-height: 50px;
+        }
+    }
+
+    @media screen and (max-width: 500px){
+        .TechnologiesCardBody{
+          grid-template-columns: repeat(2,1fr)
+        }
+    }
+
+    @media screen and (max-width: 650px){
+      
     }
 `
 

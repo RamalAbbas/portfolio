@@ -85,6 +85,15 @@ const Box = styled.div`
     border-radius: 20px;
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: 580px){
+        max-width: 320px;
+
+        img{
+          width: 320px;
+          height: 180px
+        }
+    }
 `
 
 const ProjectImg = styled.img`
