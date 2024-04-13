@@ -1,4 +1,6 @@
 Hi 👋,
+
+
 My name is Ramal
 This was a website built to showcase my technical skills, web design skills.
 
