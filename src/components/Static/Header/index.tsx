@@ -4,10 +4,15 @@ import styled from 'styled-components';
 
 import { PinkLogo } from '../../Icons/index'
 import { navbarLinks } from '../../../mock/index'
+import { useGlobalStore } from '../../../provider/povider';
 
 const Header = () => {
+  const { theme } = useGlobalStore()
   const navigate = useNavigate()
-  
+
+  const color = {
+    color: theme == "light" ? "#181818" : '#F5F5F5'
+  };
   return (
     <Wrapper>
         <Left>
@@ -19,7 +24,7 @@ const Header = () => {
                 {
                   navbarLinks.map((item) => (
                       <Item>
-                        <Link onClick={() => navigate(item.hash)}>
+                        <Link style={color} onClick={() => navigate(item.hash)}>
                             {
                               item.name
                             }
@@ -40,6 +45,8 @@ const Wrapper = styled.header`
     align-items: center;
     justify-content: space-between;
     padding: 41px 230px 41px 177px;
+
+    
 `
 
 const Left = styled.div`

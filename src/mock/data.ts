@@ -100,7 +100,7 @@ export interface projectsData {
     vercelLink: string,
 }
 
-export const projectsData = [
+export const projectsData: projectsData[] = [
     {
         image: "https://img.freepik.com/free-photo/top-view-table-full-delicious-food-composition_23-2149141352.jpg?size=626&ext=jpg&ga=GA1.1.1700460183.1712880000&semt=ais",
         name: "Foody Project",
@@ -121,5 +121,19 @@ export const projectsData = [
         technologies: " Redux , React , Styled-Components , React-Dom , React-Toastfiy",
         githubLink: "https://github.com/ramalabbasov044/react-color-app",
         vercelLink: "https://react-color-app-red.vercel.app/"
+    },
+    {
+        image: "https://cdn.vox-cdn.com/thumbor/9vV8SbBMxnaIYaiGNhoRyys2OpY=/0x0:2429x2396/1200x0/filters:focal(0x0:2429x2396):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/3488502/shutterstock_106919999.0.jpg",
+        name: "Rock Paper Scissors Game",
+        technologies: " Html5 , Css3 , Javascript",
+        githubLink: "https://github.com/ramalabbasov044/Rock-Paper",
+        vercelLink: "https://ramalabbasov044.github.io/Rock-Paper/"
+    },
+    {
+        image: "https://www.parliament.uk/contentassets/aa8b9933d3cb4364b827e7a60ea898e0/hl_library_roger-harris2022.jpg?width=1000&quality=85",
+        name: "Library App",
+        technologies: " Html5 , Css3 , Javascript , Firebase",
+        githubLink: "https://github.com/ramalabbasov044/library-app",
+        vercelLink: "https://ramalabbasov044.github.io/library-app/"
     },
 ]

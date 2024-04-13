@@ -1,8 +1,9 @@
+import { useGlobalStore } from "../../../provider/povider";
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { FC } from 'react';
 
-import { Github, Switch } from "../../Icons"
+import { Github, Switch , BlackSwitch , BlackGithub } from "../../Icons"
 interface projectTypes {
   image: string;
   name: string;
@@ -12,22 +13,44 @@ interface projectTypes {
 }
 
 const ProjectCard: FC<{ data: projectTypes }>  = ({ data }) => {
+  const { theme } = useGlobalStore()
   const navigate = useNavigate()
+
+  const handleClick = (link:string) => {
+    navigate(link)
+  }
+
+  const customBottomColor = {
+    backgroundColor: theme !== "light" ? "#363636" : '#fff'
+  }
+
+  const customProjectName = {
+    color: theme == "light" ? "#000" : '#c7c5c5'
+  }
+
+  const customProjectTechnologies = {
+    color: theme == "light" ? "#41456d" : '#ccc'
+  }
+
+  const customSwitchLink = {
+    color: theme == "light" ? "#000" : '#fff'
+  }
+
   return (
     <Box>
         <ProjectImg
             src={data.image}
         />
 
-        <Bottom>
+        <Bottom style={customBottomColor}>
             <Top>
-              <ProjectName>
+              <ProjectName style={customProjectName}>
                   {
                     data.name
                   }
               </ProjectName>
 
-              <ProjectTechnologies>
+              <ProjectTechnologies style={customProjectTechnologies}>
                 Tech stack :
                 <span style={{fontSize:"14px"}}>
                   {
@@ -39,18 +62,18 @@ const ProjectCard: FC<{ data: projectTypes }>  = ({ data }) => {
 
             <ProjectLinksBody>
                 <DemoLink>
-                  <Switch />
+                  {theme == "light" ? <BlackSwitch/> : <Switch /> }
 
-                  <SwitchLink onClick={() => navigate(data.vercelLink)}>
-                    Live Preview
+                  <SwitchLink style={customSwitchLink} onClick={() => navigate(data.vercelLink)}>
+                      Live Preview
                   </SwitchLink>
                 </DemoLink>
 
                 <GithubLink>
-                    <Github />
+                    {theme == "light" ? <BlackGithub/> : <Github /> }
 
-                    <SwitchLink onClick={() => navigate(data.githubLink)}>
-                      Live Preview
+                    <SwitchLink style={customSwitchLink} onClick={() => handleClick(data.githubLink)}>
+                        Live Preview
                     </SwitchLink>
                 </GithubLink>
             </ProjectLinksBody>
