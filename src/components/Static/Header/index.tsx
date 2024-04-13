@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
-
-import { PinkLogo } from '../../Icons/index'
+import { PinkLogo , BlackMenu , WhiteMenu } from '../../Icons/index'
 import { navbarLinks } from '../../../mock/index'
 import { useGlobalStore } from '../../../provider/povider';
+import { useState } from 'react';
 
 const Header = () => {
+  const [isMenu,setIsMenu] = useState(false)
   const { theme } = useGlobalStore()
+
+  const handleMenu = () => {
+      setIsMenu(!isMenu)
+  }
 
   const color = {
     color: theme == "light" ? "#181818" : '#F5F5F5'
@@ -16,6 +21,10 @@ const Header = () => {
     backgroundColor: theme !== "light" ? "rgb(24, 24, 24)" : 'rgb(245, 245, 245)'
   }
 
+  const mobile_menu = {
+    left: isMenu ? "0%" : "-200%"
+  }
+
   return (
     <Wrapper style={customWrapper}>
         <Left>
@@ -23,7 +32,7 @@ const Header = () => {
         </Left>
 
         <Right>
-            <List>
+            <List className='list'>
                   {
                       navbarLinks.map((item) => (
                           <Item>
@@ -36,7 +45,33 @@ const Header = () => {
                       ))
                   }
             </List>
+
+            <Menu onClick={handleMenu} className='menu'>
+                  { theme == "light" ? <BlackMenu /> : <WhiteMenu /> }
+            </Menu>
         </Right>
+
+        {
+            <MobileMenu style={mobile_menu}>
+                <List className='list2'>
+                      {
+                          navbarLinks.map((item) => (
+                              <Item>
+                                  <Link style={color} onClick={() => setIsMenu(!isMenu)} href={item.hash}>
+                                        {
+                                          item.name
+                                        }
+                                  </Link>
+                              </Item>
+                          ))
+                      }
+                </List>
+
+                <CloseButton onClick={() => setIsMenu(!isMenu)}>
+                  X
+                </CloseButton>
+            </MobileMenu> 
+        }
     </Wrapper>
   )
 }
@@ -51,6 +86,30 @@ const Wrapper = styled.header`
     position: fixed;
     width: 100vw;
     z-index: 5;
+
+    @media screen and (max-width: 992px){
+        .menu{
+          display: flex;
+        }
+
+        .list{
+          display: none;
+        }
+
+        .list2{
+          display: flex !important;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .list2 li a{
+            color: black !important;
+        }
+    }
+`
+
+const Menu = styled.div`
+    display: none;
 `
 
 const Left = styled.div`
@@ -73,4 +132,26 @@ const Link = styled.a`
     font-size: 20px;
     color: #a7a7a7;
     text-decoration: none;
+`
+
+const MobileMenu = styled.div`
+    top:0;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    position: absolute;
+    transition: .5s;
+    padding: 20px 0px 20px 20px;
+    display: flex;
+    justify-content: space-between;
+`
+
+const CloseButton = styled.button`
+    position: absolute;
+    right: 40px;
+    border: 1px solid black;
+    background: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
 `

@@ -2,14 +2,15 @@ import styled from 'styled-components'
 
 import { SocialMedia } from '../index'
 import { GrayLogo } from '../../Icons/index'
+
 const Footer = () => {
   return (
-    <Wrapper id='contact'>
+    <Wrapper id='contact' className='footer'>
         <Left>
             <GrayLogo />
         </Left>
 
-        <Contact>
+        <Contact className='contact'>
             <ContactNumber href='tel:010-717-73-76'>
                 010-717-73-76
             </ContactNumber>
@@ -31,6 +32,22 @@ const Wrapper = styled.footer`
     align-items: center;
     justify-content: space-between;
     padding: 41px 230px 41px 177px;
+
+    @media screen and (max-width: 1150px){
+        padding: 41px 130px 41px 77px;
+    }
+
+    @media screen and (max-width: 900px){
+        flex-direction: column;
+        gap: 40px;
+        padding: 41px 50px 41px 50px;
+    }
+
+    @media screen and (max-width: 645px){
+        .contact{
+            flex-direction: column;
+        }
+    }
 `
 
 const Left = styled.div`
