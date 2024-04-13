@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 interface CardTypes {
@@ -8,14 +7,13 @@ interface CardTypes {
     logo: string;
 }
 
-const TechnologoyCard: FC<{ data: CardTypes }> = ({ data  }) => {
-    const navigate = useNavigate()
+const TechnologoyCard: FC<{ data: CardTypes }> = ({ data }) => {
     return (
         <div>
             <TechonologyCardLogo
                 src={data.logo}
                 alt={data.technology}
-                onClick={() => navigate(data.documentation)}
+                onClick={() => window.open(data.documentation, "_blank")}
             />
         </div>
     )
