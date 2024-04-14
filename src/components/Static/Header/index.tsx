@@ -25,9 +25,14 @@ const Header = () => {
     left: isMenu ? "0%" : "-200%"
   }
 
+  const downloadCvButtonStyle = {
+    border: theme !== "light" ? "1px solid  #98979c": "1px solid  #000",
+    color: theme !== "light" ? "#fff" : "#000"
+  }
+
   return (
     <Wrapper style={customWrapper}>
-        <Left>
+        <Left href="#">
           <PinkLogo />
         </Left>
 
@@ -44,6 +49,11 @@ const Header = () => {
                           </Item>
                       ))
                   }
+                  <Item>
+                    <DownloadCvButton style={downloadCvButtonStyle} href="/Ramal_CV.pdf" download>
+                          Download CV
+                    </DownloadCvButton>
+                  </Item>
             </List>
 
             <Menu onClick={handleMenu} className='menu'>
@@ -65,6 +75,11 @@ const Header = () => {
                               </Item>
                           ))
                       }
+                      <Item>
+                        <DownloadCvButton style={downloadCvButtonStyle} href="/Ramal_CV.pdf" download>
+                              Download CV
+                        </DownloadCvButton>
+                      </Item>
                 </List>
 
                 <CloseButton onClick={() => setIsMenu(!isMenu)}>
@@ -99,7 +114,8 @@ const Wrapper = styled.header`
         .list2{
           display: flex !important;
           flex-direction: column;
-          gap: 20px;
+          gap: 30px;
+          align-items: flex-start;
         }
 
         .list2 li a{
@@ -112,8 +128,8 @@ const Menu = styled.div`
     display: none;
 `
 
-const Left = styled.div`
-
+const Left = styled.a`
+    text-decoration: none;
 `
 
 const Right = styled.div`
@@ -122,6 +138,7 @@ const Right = styled.div`
 
 const List = styled.ul`
     display: flex;
+    align-items: center;
     gap: 50px;
 `
 
@@ -154,4 +171,13 @@ const CloseButton = styled.button`
     border-radius: 50%;
     width: 30px;
     height: 30px;
+`
+
+const DownloadCvButton = styled.a`
+    background-color: transparent;
+    border-radius: 15px;
+    
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
 `
