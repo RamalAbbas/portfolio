@@ -159,7 +159,7 @@ export const projectsData: projectsData[] = [
         name: "Rock Paper Scissors Game",
         technologies: " Html5 , Css3 , Javascript",
         githubLink: "https://github.com/ramalabbasov044/Rock-Paper",
-        vercelLink: "https://ramalabbasov044.github.io/Rock-Paper/"
+        vercelLink: "https://rock-paper-blond.vercel.app/"
     },
 
 
@@ -168,6 +168,6 @@ export const projectsData: projectsData[] = [
         name: "Library App",
         technologies: " Html5 , Css3 , Javascript , Firebase",
         githubLink: "https://github.com/ramalabbasov044/library-app",
-        vercelLink: "https://ramalabbasov044.github.io/library-app/"
+        vercelLink: "https://library-app-delta-drab.vercel.app/"
     },
 ]
