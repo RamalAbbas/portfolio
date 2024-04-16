@@ -1,3 +1,4 @@
+import AOS from 'aos';
 import styled from 'styled-components'
 
 import { Header , Footer , TechnologyCard , ProjectCard , ThemeSwitcher , Label , Input , Textarea } from './components/Static/index'
@@ -7,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { useCallback, useEffect, useState } from 'react'
-import AOS from 'aos';
+import userImage from '../public/user.jpeg'
 import { isEmail } from './utils/isEmail'
 
 
@@ -93,7 +94,7 @@ const App = () => {
                 </AboutTitle>
 
                 <AboutImage
-                    src={"UserImage"}
+                    src={userImage}
                     alt="userImage"
                     data-aos="fade-left"
                     className='userImage'
