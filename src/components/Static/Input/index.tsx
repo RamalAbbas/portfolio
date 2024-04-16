@@ -1,4 +1,6 @@
 import { FC, ChangeEvent } from "react";
+
+import { useGlobalStore } from "../../../provider/povider";
 import styled from "styled-components";
 
 interface InputTypes {
@@ -11,12 +13,16 @@ interface InputTypes {
 }
 
 const InputComponent: FC<InputTypes> = ({ type , placeholder , id , value , name , onInputChange }) => {
+    const { theme } = useGlobalStore()
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;
         onInputChange(name, inputValue);
     };
-    
+
+    const dynamicInputStyles = {
+        backgroundColor: theme == "light" ? "#fff" : '#d8d9db'
+    }
     return (
         <>
             <Input
@@ -26,6 +32,7 @@ const InputComponent: FC<InputTypes> = ({ type , placeholder , id , value , name
                 value={value} 
                 onChange={handleChange}
                 placeholder={placeholder}
+                style={dynamicInputStyles}
             />
         </>
     )
@@ -34,7 +41,6 @@ const InputComponent: FC<InputTypes> = ({ type , placeholder , id , value , name
 export default InputComponent;
 
 const Input = styled.input`
-    background-color: #d8d9db;
     color: rgb(24,24,24);
     border: 0;
     border-radius: 8px;

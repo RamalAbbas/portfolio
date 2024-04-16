@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 import { PinkLogo , BlackMenu , WhiteMenu } from '../../Icons/index'
-import { navbarLinks } from '../../../mock/index'
 import { useGlobalStore } from '../../../provider/povider';
+import { navbarLinks } from '../../../mock/index'
+import cv from '../../../../public/Ramal_CV.pdf'
 import { useState } from 'react';
 
 const Header = () => {
@@ -50,7 +51,7 @@ const Header = () => {
                       ))
                   }
                   <Item>
-                    <DownloadCvButton style={downloadCvButtonStyle} href="/Ramal_CV.pdf" download>
+                    <DownloadCvButton style={downloadCvButtonStyle} href={cv} download="Resume">
                           Download CV
                     </DownloadCvButton>
                   </Item>
@@ -76,7 +77,7 @@ const Header = () => {
                           ))
                       }
                       <Item>
-                        <DownloadCvButton style={downloadCvButtonStyle} onClick={() => window.open("https://drive.google.com/file/d/1mnZp3G_oCKxybT3e8k9KA7Mrmcs8y1RR/view", "_blank")} href="">
+                        <DownloadCvButton href={cv} download="Resume" style={downloadCvButtonStyle} >
                               Download CV
                         </DownloadCvButton>
                       </Item>

@@ -6,7 +6,6 @@ import { useGlobalStore } from './provider/povider'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// import UserImage from '../public/user.jpeg'
 import { useCallback, useEffect, useState } from 'react'
 import AOS from 'aos';
 import { isEmail } from './utils/isEmail'
@@ -14,9 +13,10 @@ import { isEmail } from './utils/isEmail'
 
 const App = () => {
   const { theme } = useGlobalStore()
-  const [formData, setFormData] = useState({
-      message: "",
-      email: ""
+  const [contactData, setContactData] = useState({
+      name: "",
+      email: "",
+      message: ""
   });
 
   //! UseEffect Aos Configuration 
@@ -31,7 +31,7 @@ const App = () => {
 
   const handleInputChange = useCallback(
       (name: string, value: string) => {
-          setFormData((prevData) => ({
+          setContactData((prevData) => ({
               ...prevData,
               [name]: value,
           }));
@@ -39,17 +39,27 @@ const App = () => {
       []
   );
 
+
   //! Send Contact Data 
 
   const sendData = () => {
-      if(Object.values(formData).some((item) => item == "")){
-          toast.warning("Please fill out the form")
-      }else if(!isEmail(formData.email)){
-          toast.warning("Wrong Email")
-      }else{
-          console.log("true");
-      }
+    // console.log("salam", typeof Object.values(contactData).some((item) => item));
+    
+    if(Object.values(contactData).some((item: string) => item == "")){
+        toast.error("Please fill out the form")
+    }
+    else if (!isEmail(contactData.email)){
+        toast.error("Wrong Email")
+    }
+    else{
+        toast.success("Send information to Email")
+        setTimeout(()=>{
+            console.log("contactData", contactData)
+        }, 1500)
+    }
   }
+
+
 
   //! Dynamic Styles 
 
@@ -63,6 +73,11 @@ const App = () => {
 
   const headTitleColor = {
     color: theme == "light" ? "#181818" : '#ccc'
+  }
+
+  const dynamicButtonStyles = {
+    color: theme == "light" ? "#181818" : '#ccc',
+    backgroundColor: theme !== "light" ?  "#333944" : "#fff"
   }
 
   return (
@@ -121,24 +136,29 @@ const App = () => {
                 </ProjectBoxBody>
             </Projects>
 
-            <Contact id='contact' >
+            <Contact id='contact'>
                     <HeadTitle data-aos="fade-up" data-aos-anchor-placement="top-bottom"  className='head_title' style={headTitleColor}>
-                      Projects
+                        Contact
                     </HeadTitle>
 
                     <ContactForm>
                         <ContactItem>
+                          <Label value={"Your Name"} forId={"name"} />
+                          <Input type={"text"} id={"name"} name={"name"} placeholder={"Name"} value={contactData.name} onInputChange={handleInputChange} />
+                        </ContactItem>
+
+                        <ContactItem>
                           <Label value={"Your Email"} forId={"email"} />
-                          <Input type={"email"} id={"email"} name={"email"} placeholder={"Email"} value={formData.email} onInputChange={handleInputChange} />
+                          <Input type={"email"} id={"email"} name={"email"} placeholder={"Email"} value={contactData.email} onInputChange={handleInputChange} />
                         </ContactItem>
 
                         <ContactItem >
                           <Label value={"Your Message"} forId={"message"} />
-                          <Textarea type={"text"} id={"message"} name={"message"} placeholder={"Message"} value={formData.message} onInputChange={handleInputChange} />
+                          <Textarea id={"message"} name={"message"} placeholder={"Message"} value={contactData.message} onInputChange={handleInputChange} />
                         </ContactItem>
 
                         <FormBottom>
-                          <SendButton onClick={sendData}>
+                          <SendButton style={dynamicButtonStyles} onClick={sendData}>
                               Send
                           </SendButton>
                         </FormBottom>
@@ -360,7 +380,6 @@ const SendButton = styled.button`
     background-color: #333944;
     border: 0;
     border-radius: 8px;
-    color: #fff;
     font-size: 17px;
     margin-right: -16px;
     cursor: pointer;
