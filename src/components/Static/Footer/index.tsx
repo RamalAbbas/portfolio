@@ -5,7 +5,7 @@ import { GrayLogo } from '../../Icons/index'
 
 const Footer = () => {
   return (
-    <Wrapper id='contact' className='footer'>
+    <Wrapper className='footer'>
         <Left>
             <GrayLogo />
         </Left>

@@ -27,8 +27,16 @@ const Wrapper = styled.div`
 
 const Github = styled.div`
     cursor: pointer;
+
+    &:hover{
+        transform: scale(1.1);
+    }
 `
 
 const LinkedlnBox = styled.div`
     cursor: pointer;
+    
+    &:hover{
+        transform: scale(1.1);
+    }
 `

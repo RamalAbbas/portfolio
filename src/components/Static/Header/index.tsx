@@ -65,8 +65,8 @@ const Header = () => {
             <MobileMenu style={mobile_menu}>
                 <List className='list2'>
                       {
-                          navbarLinks.map((item) => (
-                              <Item>
+                          navbarLinks.map((item,index) => (
+                              <Item key={index}>
                                   <Link style={color} onClick={() => setIsMenu(!isMenu)} href={item.hash}>
                                         {
                                           item.name
@@ -76,14 +76,14 @@ const Header = () => {
                           ))
                       }
                       <Item>
-                        <DownloadCvButton style={downloadCvButtonStyle} href="/Ramal_CV.pdf" download>
+                        <DownloadCvButton style={downloadCvButtonStyle} onClick={() => window.open("https://drive.google.com/file/d/1mnZp3G_oCKxybT3e8k9KA7Mrmcs8y1RR/view", "_blank")} href="">
                               Download CV
                         </DownloadCvButton>
                       </Item>
                 </List>
 
                 <CloseButton onClick={() => setIsMenu(!isMenu)}>
-                  X
+                    X
                 </CloseButton>
             </MobileMenu> 
         }
@@ -142,7 +142,11 @@ const List = styled.ul`
     gap: 50px;
 `
 
-const Item = styled.li``
+const Item = styled.li`
+    &:hover{
+      transform: scale(1.1)
+    }
+`
 
 const Link = styled.a`
     cursor: pointer;
@@ -176,8 +180,11 @@ const CloseButton = styled.button`
 const DownloadCvButton = styled.a`
     background-color: transparent;
     border-radius: 15px;
-    
     padding: 10px 20px;
     cursor: pointer;
     text-decoration: none;
+
+    &:hover{
+      transform: scale(1.2)
+    }
 `

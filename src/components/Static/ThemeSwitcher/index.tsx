@@ -43,5 +43,7 @@ const ThemeSwitchButton = styled.button`
     cursor: pointer;
     border: 1px solid white;
 
-    
+    &:hover{
+        transform: scale(1.1)
+    }
 `

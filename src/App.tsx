@@ -1,13 +1,57 @@
 import styled from 'styled-components'
 
-import { Header , Footer , TechnologyCard , ProjectCard , ThemeSwitcher } from './components/Static/index'
+import { Header , Footer , TechnologyCard , ProjectCard , ThemeSwitcher , Label , Input , Textarea } from './components/Static/index'
 import { technologiesData , projectsData } from './mock/index'
 import { useGlobalStore } from './provider/povider'
-import './assets/css/reset.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// import UserImage from '../public/user.jpeg'
+import { useCallback, useEffect, useState } from 'react'
+import AOS from 'aos';
+import { isEmail } from './utils/isEmail'
 
 
 const App = () => {
   const { theme } = useGlobalStore()
+  const [formData, setFormData] = useState({
+      message: "",
+      email: ""
+  });
+
+  //! UseEffect Aos Configuration 
+
+  useEffect(() => {
+      AOS.init({
+          once: false,
+      })
+  }, [])
+
+  //! Input OnChange Function
+
+  const handleInputChange = useCallback(
+      (name: string, value: string) => {
+          setFormData((prevData) => ({
+              ...prevData,
+              [name]: value,
+          }));
+      },
+      []
+  );
+
+  //! Send Contact Data 
+
+  const sendData = () => {
+      if(Object.values(formData).some((item) => item == "")){
+          toast.warning("Please fill out the form")
+      }else if(!isEmail(formData.email)){
+          toast.warning("Wrong Email")
+      }else{
+          console.log("true");
+      }
+  }
+
+  //! Dynamic Styles 
 
   const globalStyle = {
     backgroundColor: theme == "light" ? "#F5F5F5" : '#181818'
@@ -27,29 +71,30 @@ const App = () => {
 
         <Main className="content">
             <AboutMeBox id="about" className='about'>
-                <AboutTitle className='about_title' style={aboutTitleColor}>
+                <AboutTitle data-aos="fade-right" className='about_title' style={aboutTitleColor}>
                     Hi 👋, <br></br>
                     <CyanText>My name is Ramal</CyanText> <br></br>
                     I build things for web
                 </AboutTitle>
 
                 <AboutImage
-                    src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745"
+                    src={"UserImage"}
                     alt="userImage"
+                    data-aos="fade-left"
                     className='userImage'
                 />
             </AboutMeBox>
 
             <Technologies id="techstack">
-                <HeadTitle className='head_title' style={headTitleColor}>
+                <HeadTitle data-aos="fade-up" data-aos-anchor-placement="top-bottom" className='head_title' style={headTitleColor}>
                   My Tech Stack
                 </HeadTitle>
 
-                <HeadDescription className='head_desc'>
+                <HeadDescription data-aos="fade-up" data-aos-anchor-placement="top-bottom" className='head_desc'>
                   Technologies I’ve been working with recently
                 </HeadDescription>
 
-                <TechnologiesCardBody className='TechnologiesCardBody'>
+                <TechnologiesCardBody data-aos="fade-up" data-aos-anchor-placement="top-bottom" className='TechnologiesCardBody'>
                     {
                       technologiesData.map((info,index) => (
                         <TechnologyCard data={info} key={index} />
@@ -59,26 +104,51 @@ const App = () => {
             </Technologies>
 
             <Projects id="projects">
-                <HeadTitle className='head_title' style={headTitleColor}>
+                <HeadTitle data-aos="fade-up" data-aos-anchor-placement="top-bottom"  className='head_title' style={headTitleColor}>
                   Projects
                 </HeadTitle>
 
-                <HeadDescription className='head_desc'>
+                <HeadDescription data-aos="fade-up" data-aos-anchor-placement="top-bottom"  className='head_desc'>
                   Things I’ve built so far
                 </HeadDescription>
 
-                <ProjectBoxBody className='ProjectBoxBody'>
+                <ProjectBoxBody  className='ProjectBoxBody'>
                       {
-                          projectsData.map((item) => (
-                            <ProjectCard data={item} />
+                          projectsData.map((item,index) => (
+                            <ProjectCard key={index} data={item} />
                           ))
                       }
                 </ProjectBoxBody>
             </Projects>
+
+            <Contact id='contact' >
+                    <HeadTitle data-aos="fade-up" data-aos-anchor-placement="top-bottom"  className='head_title' style={headTitleColor}>
+                      Projects
+                    </HeadTitle>
+
+                    <ContactForm>
+                        <ContactItem>
+                          <Label value={"Your Email"} forId={"email"} />
+                          <Input type={"email"} id={"email"} name={"email"} placeholder={"Email"} value={formData.email} onInputChange={handleInputChange} />
+                        </ContactItem>
+
+                        <ContactItem >
+                          <Label value={"Your Message"} forId={"message"} />
+                          <Textarea type={"text"} id={"message"} name={"message"} placeholder={"Message"} value={formData.message} onInputChange={handleInputChange} />
+                        </ContactItem>
+
+                        <FormBottom>
+                          <SendButton onClick={sendData}>
+                              Send
+                          </SendButton>
+                        </FormBottom>
+                    </ContactForm>
+            </Contact>
         </Main>
 
       <Footer />
       <ThemeSwitcher />
+      <ToastContainer />
     </div>
   )
 }
@@ -172,8 +242,6 @@ const Main = styled.main`
     }
 `
 
-
-
 //! About User  
 
 const AboutMeBox = styled.div`
@@ -194,7 +262,8 @@ const AboutImage = styled.img`
     width: 349px;
     height: 349px;
     border-radius: 50%;
-    border: 7px solid #23A6F0
+    border: 7px solid #23A6F0;
+    object-fit: cover;
 `
 
 
@@ -250,4 +319,49 @@ const ProjectBoxBody = styled.div`
     grid-template-columns: repeat(3,1fr);
     gap: 35px;
     margin-top: 50px;
+`
+
+//! Contact
+
+const Contact = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  justify-content: center;
+  align-items: center
+`
+
+const ContactForm = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 608px;
+    width: 100%;
+`
+
+const ContactItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+`
+
+const FormBottom = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+`
+
+const SendButton = styled.button`
+    width: 128px;
+    height: 48px;
+    background-color: #333944;
+    border: 0;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 17px;
+    margin-right: -16px;
+    cursor: pointer;
 `

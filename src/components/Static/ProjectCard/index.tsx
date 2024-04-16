@@ -1,6 +1,7 @@
 import { useGlobalStore } from "../../../provider/povider";
+import AOS from 'aos'
 import styled from "styled-components"
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 
 import { Github, Switch , BlackSwitch , BlackGithub } from "../../Icons"
 interface projectTypes {
@@ -30,8 +31,15 @@ const ProjectCard: FC<{ data: projectTypes }>  = ({ data }) => {
     color: theme == "light" ? "#000" : '#fff'
   }
 
+  useEffect(() => {
+    AOS.init({
+        once: false,
+    })
+}, [])
+
   return (
-    <Box>
+    <Box data-aos="fade-up"
+    data-aos-anchor-placement="bottom-bottom">
         <ProjectImg
             src={data.image}
         />
