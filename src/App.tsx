@@ -8,66 +8,66 @@ import AOS from 'aos';
 import emailjs from '@emailjs/browser'
 import styled from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
 import React, { useEffect , useRef } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 const App = () => {
-  const form = useRef<HTMLFormElement>(null);
-  const { theme } = useGlobalStore()
+    const form = useRef<HTMLFormElement>(null)
+    const { theme } = useGlobalStore()
 
-  //! UseEffect Aos Configuration 
+    //! UseEffect Aos Configuration 
 
-  useEffect(() => {
-      AOS.init({
-          once: false,
-      })
-  }, [])
-
-  //! Send Email Data 
-
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (!form.current) return;
-
-    emailjs
-      .sendForm('service_5mxrinc', 'template_bdnswbd', form.current, {
-        publicKey: 'XLn0Tdu9pnvCxrtjz',
-      })
-      .then(
-        () => {
-          toast.success("Connection established")
-          
-        },
-        (error) => {
-          toast.success('FAILED...', error.text)
-        },
-      );
-  };
+    useEffect(() => {
+        AOS.init({
+            once: false,
+        })
+    }, [])
 
 
-  //! Dynamic Styles 
+    //! Send Email Data 
 
-  const globalStyle = {
-    backgroundColor: theme == "light" ? "#F5F5F5" : '#181818'
-  };
+    const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
 
-  const aboutTitleColor = {
-    color: theme == "light" ? "#181818" : '#d9d9d9'
-  }
+      if (!form.current) return;
+      
 
-  const headTitleColor = {
-    color: theme == "light" ? "#181818" : '#ccc'
-  }
+      emailjs
+        .sendForm('service_5mxrinc', 'template_bdnswbd', form.current, {
+          publicKey: 'XLn0Tdu9pnvCxrtjz',
+        })
+        .then(
+          () => {
+            toast.success("Connection established")
+          },
+          (error) => {
+            toast.success('FAILED...', error.text)
+          },
+        );
+    };
 
-  const dynamicButtonStyles = {
-    color: theme == "light" ? "#181818" : '#ccc',
-    backgroundColor: theme !== "light" ?  "#333944" : "#fff"
-  }
+    //! Dynamic Styles 
 
-  return (
-    <div style={globalStyle}>
-      <Header />
+    const globalStyle = {
+      backgroundColor: theme == "light" ? "#F5F5F5" : '#181818'
+    };
+
+    const aboutTitleColor = {
+      color: theme == "light" ? "#181818" : '#d9d9d9'
+    }
+
+    const headTitleColor = {
+      color: theme == "light" ? "#181818" : '#ccc'
+    }
+
+    const dynamicButtonStyles = {
+      color: theme == "light" ? "#181818" : '#ccc',
+      backgroundColor: theme !== "light" ?  "#333944" : "#fff"
+    }
+
+    return (
+      <div style={globalStyle}>
+        <Header />
 
         <Main className="content">
             <AboutMeBox id="about" className='about'>
@@ -128,32 +128,32 @@ const App = () => {
 
                     <ContactForm ref={form} onSubmit={sendEmail}>
                         <ContactItem>
-                          <Label value={"Name"} forId={"user_name"} />
-                          <Input type={"text"} id={"user_name"} name={"user_name"} placeholder={"Name"} />
+                            <Label value={"Name"} forId={"user_name"} />
+                            <Input type={"text"} id={"user_name"} name={"user_name"} placeholder={"Name"} />
                         </ContactItem>
 
                         <ContactItem>
-                          <Label value={"Email"} forId={"user_email"} />
-                          <Input type={"email"} id={"user_email"} name={"user_email"} placeholder={"Email"} />
+                            <Label value={"Email"} forId={"user_email"} />
+                            <Input type={"email"} id={"user_email"} name={"user_email"} placeholder={"Email"} />
                         </ContactItem>
 
-                        <ContactItem >
-                          <Label value={"Your Message"} forId={"message"} />
-                          <Textarea id={"message"} name={"message"} placeholder={"Message"} />
+                        <ContactItem>
+                            <Label value={"Your Message"} forId={"message"} />
+                            <Textarea id={"message"} name={"message"} placeholder={"Message"} />
                         </ContactItem>
                         
                         <FormBottom>
-                          <SendButton style={dynamicButtonStyles} type="submit" value="Send" />
+                            <SendButton style={dynamicButtonStyles} type="submit" value="Send" />
                         </FormBottom>
                     </ContactForm>
             </Contact>
         </Main>
 
-      <Footer />
-      <ThemeSwitcher />
-      <ToastContainer />
-    </div>
-  )
+        <Footer />
+        <ThemeSwitcher />
+        <ToastContainer />
+      </div>
+    )
 }
 
 export default App
@@ -269,8 +269,6 @@ const AboutImage = styled.img`
     object-fit: cover;
 `
 
-
-
 //! Techonologies
 
 const Technologies = styled.section`
@@ -349,6 +347,7 @@ const ContactItem = styled.div`
     align-items: flex-start;
     gap: 10px;
     width: 100%;
+    margin-bottom: 20px;
 `
 
 const FormBottom = styled.div`

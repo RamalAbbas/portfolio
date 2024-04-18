@@ -40,8 +40,8 @@ const Header = () => {
         <Right>
             <List className='list'>
                   {
-                      navbarLinks.map((item) => (
-                          <Item>
+                      navbarLinks.map((item,index) => (
+                          <Item key={index}>
                               <Link style={color} href={item.hash}>
                                     {
                                       item.name
