@@ -5,7 +5,7 @@ import { DarkGithub , Linkedln } from "../../Icons"
 const SocialMedia = () => {
     return (
         <Wrapper>
-            <Github onClick={() => window.open("https://github.com/ramalabbasov044", "_blank")}>
+            <Github onClick={() => window.open("https://github.com/RamalAbbas", "_blank")}>
                 <DarkGithub/>
             </Github>
 
