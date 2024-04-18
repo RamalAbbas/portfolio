@@ -51,7 +51,7 @@ const Header = () => {
                       ))
                   }
                   <Item>
-                    <DownloadCvButton style={downloadCvButtonStyle} href={cv} download="Resume">
+                    <DownloadCvButton style={downloadCvButtonStyle} href={cv} download="Ramal_CV">
                           Download CV
                     </DownloadCvButton>
                   </Item>
@@ -77,7 +77,7 @@ const Header = () => {
                           ))
                       }
                       <Item>
-                        <DownloadCvButton href={cv} download="Resume" style={downloadCvButtonStyle} >
+                        <DownloadCvButton href={cv} download="Ramal_CV" style={downloadCvButtonStyle} >
                               Download CV
                         </DownloadCvButton>
                       </Item>

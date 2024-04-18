@@ -163,8 +163,9 @@ const Main = styled.main`
     flex-direction: column;
     padding: 143.5px 230px 0px 177px;
     
-
     @media screen and (max-width: 1350px){
+        padding: 143.5px 70px 0px 70px !important;
+
         .TechnologiesCardBody{
           grid-template-columns: repeat(4,1fr)
         }
@@ -173,7 +174,6 @@ const Main = styled.main`
           grid-template-columns: repeat(2,1fr)
         }
 
-        padding: 143.5px 70px 0px 70px !important;
     }
 
     @media screen and (max-width: 1200px){
@@ -238,10 +238,6 @@ const Main = styled.main`
         .TechnologiesCardBody{
           grid-template-columns: repeat(2,1fr)
         }
-    }
-
-    @media screen and (max-width: 650px){
-      
     }
 `
 
