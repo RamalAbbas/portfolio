@@ -1,4 +1,4 @@
-import { FC, ChangeEvent } from "react";
+import { FC } from "react";
 import styled from "styled-components";
 import { useGlobalStore } from "../../../provider/povider";
 
@@ -6,17 +6,10 @@ interface TextareaComponentProps {
     id: string;
     name: string;
     placeholder: string;
-    value: string;
-    onInputChange: (name: string, value: string) => void;
 }
 
-const TextareaComponent: FC<TextareaComponentProps> = ({ placeholder , id , value , name , onInputChange }) => {
+const TextareaComponent: FC<TextareaComponentProps> = ({ placeholder , id , name  }) => {
     const { theme } = useGlobalStore();
-
-    const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        const inputValue = e.target.value;
-        onInputChange(name, inputValue);
-    };
 
     const dynamicTextAreaStyles = {
         backgroundColor: theme === "light" ? "#fff" : '#d8d9db'
@@ -26,8 +19,6 @@ const TextareaComponent: FC<TextareaComponentProps> = ({ placeholder , id , valu
             <Textarea
                 id={id}
                 name={name}
-                value={value} 
-                onChange={handleChange}
                 placeholder={placeholder}
                 style={dynamicTextAreaStyles}
             />

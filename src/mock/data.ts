@@ -159,7 +159,7 @@ export const projectsData: projectsData[] = [
         name: "Rock Paper Scissors Game",
         technologies: " Html5 , Css3 , Javascript",
         githubLink: "https://github.com/ramalabbasov044/Rock-Paper",
-        vercelLink: ""
+        vercelLink: "https://rock-paper-blond.vercel.app/"
     },
 
 

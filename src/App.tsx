@@ -1,24 +1,19 @@
+import { Header , Footer , TechnologyCard , ProjectCard , ThemeSwitcher , Label , Input , Textarea } from './components/Static/index';
+import { technologiesData , projectsData } from './mock/index';
+import { useGlobalStore } from './provider/povider';
+import userImage from '../public/user.jpeg';
+
+
 import AOS from 'aos';
-import styled from 'styled-components'
-
-import { Header , Footer , TechnologyCard , ProjectCard , ThemeSwitcher , Label , Input , Textarea } from './components/Static/index'
-import { technologiesData , projectsData } from './mock/index'
-import { useGlobalStore } from './provider/povider'
-import { ToastContainer, toast } from 'react-toastify';
+import emailjs from '@emailjs/browser'
+import styled from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
-
-import { useCallback, useEffect, useState } from 'react'
-import userImage from '../public/user.jpeg'
-import { isEmail } from './utils/isEmail'
-
+import { ToastContainer, toast } from 'react-toastify';
+import React, { useEffect , useRef } from 'react';
 
 const App = () => {
+  const form = useRef<HTMLFormElement>(null);
   const { theme } = useGlobalStore()
-  const [contactData, setContactData] = useState({
-      name: "",
-      email: "",
-      message: ""
-  });
 
   //! UseEffect Aos Configuration 
 
@@ -28,38 +23,27 @@ const App = () => {
       })
   }, [])
 
-  //! Input OnChange Function
+  //! Send Email Data 
 
-  const handleInputChange = useCallback(
-      (name: string, value: string) => {
-          setContactData((prevData) => ({
-              ...prevData,
-              [name]: value,
-          }));
-      },
-      []
-  );
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
+    if (!form.current) return;
 
-  //! Send Contact Data 
-
-  const sendData = () => {
-    // console.log("salam", typeof Object.values(contactData).some((item) => item));
-    
-    if(Object.values(contactData).some((item: string) => item == "")){
-        toast.error("Please fill out the form")
-    }
-    else if (!isEmail(contactData.email)){
-        toast.error("Wrong Email")
-    }
-    else{
-        toast.success("Send information to Email")
-        setTimeout(()=>{
-            console.log("contactData", contactData)
-        }, 1500)
-    }
-  }
-
+    emailjs
+      .sendForm('service_5mxrinc', 'template_bdnswbd', form.current, {
+        publicKey: 'XLn0Tdu9pnvCxrtjz',
+      })
+      .then(
+        () => {
+          toast.success("Connection established")
+          
+        },
+        (error) => {
+          toast.success('FAILED...', error.text)
+        },
+      );
+  };
 
 
   //! Dynamic Styles 
@@ -142,26 +126,24 @@ const App = () => {
                         Contact
                     </HeadTitle>
 
-                    <ContactForm>
+                    <ContactForm ref={form} onSubmit={sendEmail}>
                         <ContactItem>
-                          <Label value={"Your Name"} forId={"name"} />
-                          <Input type={"text"} id={"name"} name={"name"} placeholder={"Name"} value={contactData.name} onInputChange={handleInputChange} />
+                          <Label value={"Name"} forId={"user_name"} />
+                          <Input type={"text"} id={"user_name"} name={"user_name"} placeholder={"Name"} />
                         </ContactItem>
 
                         <ContactItem>
-                          <Label value={"Your Email"} forId={"email"} />
-                          <Input type={"email"} id={"email"} name={"email"} placeholder={"Email"} value={contactData.email} onInputChange={handleInputChange} />
+                          <Label value={"Email"} forId={"user_email"} />
+                          <Input type={"email"} id={"user_email"} name={"user_email"} placeholder={"Email"} />
                         </ContactItem>
 
                         <ContactItem >
                           <Label value={"Your Message"} forId={"message"} />
-                          <Textarea id={"message"} name={"message"} placeholder={"Message"} value={contactData.message} onInputChange={handleInputChange} />
+                          <Textarea id={"message"} name={"message"} placeholder={"Message"} />
                         </ContactItem>
-
+                        
                         <FormBottom>
-                          <SendButton style={dynamicButtonStyles} onClick={sendData}>
-                              Send
-                          </SendButton>
+                          <SendButton style={dynamicButtonStyles} type="submit" value="Send" />
                         </FormBottom>
                     </ContactForm>
             </Contact>
@@ -352,7 +334,7 @@ const Contact = styled.div`
   align-items: center
 `
 
-const ContactForm = styled.div`
+const ContactForm = styled.form`
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -375,10 +357,9 @@ const FormBottom = styled.div`
     width: 100%;
 `
 
-const SendButton = styled.button`
+const SendButton = styled.input`
     width: 128px;
     height: 48px;
-    background-color: #333944;
     border: 0;
     border-radius: 8px;
     font-size: 17px;
