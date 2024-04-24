@@ -23,6 +23,14 @@ const App = () => {
         })
     }, [])
 
+    // When be scroll out up
+    window.onload = function() {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth' 
+      });
+    };
 
     //! Send Email Data 
 
@@ -206,6 +214,8 @@ const Main = styled.main`
     }
 
     @media screen and (max-width: 769px) {
+        padding: 143.5px 40px 0px 40px !important;
+
         .head_title{
           font-size: 29px;
           text-align: center;
