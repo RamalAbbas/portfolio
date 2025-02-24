@@ -1,7 +1,6 @@
 import { Header , Footer , TechnologyCard , ProjectCard , ThemeSwitcher , Label , Input , Textarea } from './components/Static/index';
 import { technologiesData , projectsData } from './mock/index';
 import { useGlobalStore } from './provider/povider';
-import userImage from '../public/user.jpeg';
 
 
 import AOS from 'aos';
