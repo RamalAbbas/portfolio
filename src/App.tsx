@@ -86,8 +86,7 @@ const App = () => {
                 </AboutTitle>
 
                 <AboutImage
-                    // src={userImage}
-                    src=""
+                    src={"../public/user.jpegg"}
                     alt="userImage"
                     data-aos="fade-left"
                     className='userImage'
