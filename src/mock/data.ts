@@ -137,46 +137,46 @@ export const projectsData: projectsData[] = [
 
 
     {
-        image: "https://images.ctfassets.net/hrltx12pl8hq/6TIZLa1AKeBel0yVO7ReIn/1fc0e2fd9fcc6d66b3cc733aa2547e11/weather-images.jpg?fit=fill&w=1200&h=630",
-        name: "Weather App",
-        technologies: " Redux , React , Styled-Components , React-Dom ",
-        githubLink: "https://github.com/ramalabbasov044/redux-weather-app",
-        vercelLink: "https://redux-weather-app-seven.vercel.app/"
+        image: "https://rhyswear.vercel.app/BgPhoto.jpg",
+        name: "Rhyswear",
+        technologies: " Axios , Firebase , Styled-Components , NextJS",
+        githubLink: "https://github.com/RamalAbbas/rhyswear",
+        vercelLink: "https://rhyswear.vercel.app/"
     },
 
 
     {
-        image: "https://miro.medium.com/v2/resize:fit:800/1*5_u3kPo3s12FR1BHS5rTaQ.png",
-        name: "React Color App",
-        technologies: " Redux , React , Styled-Components , React-Dom , React-Toastfiy",
-        githubLink: "https://github.com/ramalabbasov044/react-color-app",
-        vercelLink: "https://react-color-app-red.vercel.app/"
+        image: "https://pulpal.vercel.app/images/modern.png",
+        name: "Pul Pal",
+        technologies: " Axios , Swiper , Zustand , React , Styled-Components",
+        githubLink: "https://github.com/RamalAbbas/pulpal",
+        vercelLink: "https://pulpal.vercel.app/"
     },
 
 
     {
-        image: "https://cdn.vox-cdn.com/thumbor/9vV8SbBMxnaIYaiGNhoRyys2OpY=/0x0:2429x2396/1200x0/filters:focal(0x0:2429x2396):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/3488502/shutterstock_106919999.0.jpg",
-        name: "Rock Paper Scissors Game",
-        technologies: " Html5 , Css3 , Javascript",
-        githubLink: "https://github.com/ramalabbasov044/Rock-Paper",
-        vercelLink: "https://rock-paper-blond.vercel.app/"
-    },
-
-
-    {
-        image: "https://www.parliament.uk/contentassets/aa8b9933d3cb4364b827e7a60ea898e0/hl_library_roger-harris2022.jpg?width=1000&quality=85",
-        name: "Library",
-        technologies: " Html5 , Css3 , Javascript , Firebase",
-        githubLink: "https://github.com/ramalabbasov044/library-app",
-        vercelLink: "https://library-app-delta-drab.vercel.app/"
-    },
-
-
-    {
-        image: "https://sup.vc/images/slider/bg.jpg",
+        image: "https://framerusercontent.com/images/Nx4Os4OzmDrbsnu4Xb9KJxC36I.jpg?scale-down-to=4096&width=6960&height=3904",
         name: "Sup.vc",
-        technologies: " Html5 , Css3 , Javascript ",
+        technologies: " Html5 , Css3 , Javascript",
         githubLink: "https://github.com/rahimlisarkhan/sub.az",
         vercelLink: "https://sup.vc/"
+    },
+
+
+    {
+        image: "https://sipner-square.vercel.app/src/assets/images/logo/white.svg",
+        name: "Sipner Square",
+        technologies: " Html5 , Css3 , Javascript , Tailwind",
+        githubLink: "https://github.com/RamalAbbas/sipner-square",
+        vercelLink: "https://sipnersquare.com/"
+    },
+
+
+    {
+        image: "https://zody-app.vercel.app/logo/main.svg",
+        name: "Zody",
+        technologies: " Axios , I18n , Swiper , React , Styled-Components",
+        githubLink: "https://github.com/RamalAbbas/zody-app",
+        vercelLink: "https://zody-app.vercel.app/?LNG=en"
     },
 ]
